@@ -9,3 +9,20 @@ body{
     min-height: 100vh;
     background-color: #242633 !important;
 }
+
+.quizCard{
+    width: 30rem;
+}
+
+.questionFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border-top: 1px solid rgba(0, 0, 0, 0.4); */
+    padding-top: 24px;
+}
+
+.btnPurple{
+    background-color: #6B63B5 !important;
+    border-color: #6B63B5 !important;
+}
