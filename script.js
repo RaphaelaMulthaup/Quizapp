@@ -82,5 +82,10 @@ function showQuestion(){
 }
 
 function answer(selection){
-
+    let question = questions[currentQuestion];
+    if(selection == question['rightAnswer']){
+        console.log('Richtig!!');
+    } else{
+        console.log('Falsche Antwort!');
+    }
 }
