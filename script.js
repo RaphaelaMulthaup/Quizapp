@@ -80,3 +80,7 @@ function showQuestion(){
     document.getElementById('answer4').innerHTML = question['answer4'];
 
 }
+
+function answer(selection){
+
+}

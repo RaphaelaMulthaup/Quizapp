@@ -18,6 +18,12 @@ body{
     margin-bottom: 16px !important;
 }
 
+.quizAnswerCard:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
 .questionFooter{
     display: flex;
     justify-content: space-between;
