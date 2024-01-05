@@ -91,4 +91,5 @@ function answer(selection){
         document.getElementById(`answer${selection}`).parentNode.classList.add('bg-danger');
         document.getElementById(`answer${question['rightAnswer']}`).parentNode.classList.add('bg-success');
     }
+    document.getElementById('nextButton').disabled = false;
 }
