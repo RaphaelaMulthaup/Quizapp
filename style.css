@@ -36,3 +36,7 @@ body{
     background-color: #6B63B5 !important;
     border-color: #6B63B5 !important;
 }
+
+.bg-success, .bg-danger{
+    color: white !important;
+}

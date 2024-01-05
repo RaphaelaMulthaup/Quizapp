@@ -85,7 +85,9 @@ function answer(selection){
     let question = questions[currentQuestion];
     if(selection == question['rightAnswer']){
         console.log('Richtig!!');
+        document.getElementById(`answer${selection}`).parentNode.classList.add('bg-success');
     } else{
         console.log('Falsche Antwort!');
+        document.getElementById(`answer${selection}`).parentNode.classList.add('bg-danger');
     }
 }
