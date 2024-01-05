@@ -14,6 +14,10 @@ body{
     width: 30rem;
 }
 
+.card-title{
+    margin-bottom: 16px !important;
+}
+
 .questionFooter{
     display: flex;
     justify-content: space-between;
