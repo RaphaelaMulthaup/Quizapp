@@ -93,3 +93,19 @@ function answer(selection){
     }
     document.getElementById('nextButton').disabled = false;
 }
+
+function nextQuestion(){
+    currentQuestion ++;
+    showQuestion();
+    document.getElementById('nextButton').disabled = true;
+    // Das hat nicht geklappt. Habe ich bei Slack nachgefragt.
+    // document.getElementById('cardBody').children.classList.remove('bg-danger', 'bg-success');      
+    document.getElementById('answer1').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer1').parentNode.classList.remove('bg-success');
+    document.getElementById('answer2').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer2').parentNode.classList.remove('bg-success');
+    document.getElementById('answer3').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer3').parentNode.classList.remove('bg-success');
+    document.getElementById('answer4').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer4').parentNode.classList.remove('bg-success');
+}

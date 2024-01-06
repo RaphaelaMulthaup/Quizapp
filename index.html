@@ -13,7 +13,7 @@
     <div class="container">
         <div class="card quizCard">
             <img src="./img/hogwarts.jpg" class="card-img-top">
-            <div class="card-body">
+            <div class="card-body" id="cardBody">
               <h5 class="card-title" id="questionText">Frage</h5>
 
               <div class="card mb-2 quizAnswerCard" onclick="answer(1)">
@@ -44,7 +44,7 @@
                 <span>
                   <b>1</b> von <b id="numberQuestions"></b> Fragen
                 </span>
-               <button disabled id="nextButton" class="btn btn-primary btnPurple">Nächste Frage</button>
+               <button disabled id="nextButton" class="btn btn-primary btnPurple" onclick="nextQuestion()">Nächste Frage</button>
               </div>
             </div>
           </div>    
