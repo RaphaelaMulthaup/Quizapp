@@ -78,6 +78,7 @@ function showQuestion(){
     document.getElementById('answer2').innerHTML = question['answer2'];
     document.getElementById('answer3').innerHTML = question['answer3'];
     document.getElementById('answer4').innerHTML = question['answer4'];
+    document.getElementById('numberCurrentQuestion').innerHTML = currentQuestion + 1;
 
 }
 
