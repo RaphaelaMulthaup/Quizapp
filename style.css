@@ -40,3 +40,13 @@ body{
 .bg-success, .bg-danger{
     color: white !important;
 }
+
+.quizEnded{
+    text-align: center;
+    margin: 30px 10px;
+}
+
+.displayCorrectAnswers{
+    text-align: center;
+    margin: 0px 10px 30px;
+}

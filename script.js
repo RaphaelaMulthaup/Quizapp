@@ -59,11 +59,12 @@ let questions = [
         "answer2": "In der verbotenen Abteilung der Hogwarts-Bibliothek",
         "answer3": "In der Kammer des Schreckens",
         "answer4": "Auf dem Astronomieturm",
-        "rightAnswer": 4
+        "rightAnswer": 2
     }
 ];
 
 let currentQuestion = 0;
+let rightAnswers = 0;
 
 function init(){
     document.getElementById('numberQuestions').innerHTML= questions.length;
@@ -73,7 +74,7 @@ function init(){
 function showQuestion(){
 
     if(currentQuestion >= questions.length){
-        document.getElementById('cardBody').innerHTML = endScreen();
+        document.getElementById('quizCard').innerHTML = endScreen();
     } else{
         let question = questions[currentQuestion];
 
@@ -88,8 +89,9 @@ function showQuestion(){
 
 function endScreen(){
     return /*html*/`
-        <h5>Dein Ergebniss:</h5>
-        <h5>Du hast <b></b> von <b>${questions.length}</b> Fragen richtig beantwortet!</h5>
+        <img src="./img/hermione.jpg" class="card-img-top">
+        <h5 class="quizEnded">Quiz beendet!</h5>
+        <h5 class="displayCorrectAnswers">Du hast <b>${rightAnswers}</b> von <b>${questions.length}</b> Fragen richtig beantwortet!</h5>
     `
 }
 
@@ -98,6 +100,7 @@ function answer(selection){
     if(selection == question['rightAnswer']){
         console.log('Richtig!!');
         document.getElementById(`answer${selection}`).parentNode.classList.add('bg-success');
+        rightAnswers ++;
     } else{
         console.log('Falsche Antwort!');
         document.getElementById(`answer${selection}`).parentNode.classList.add('bg-danger');
