@@ -71,15 +71,19 @@ function init(){
 }
 
 function showQuestion(){
-    let question = questions[currentQuestion];
 
-    document.getElementById('questionText').innerHTML = question['question'];
-    document.getElementById('answer1').innerHTML = question['answer1'];
-    document.getElementById('answer2').innerHTML = question['answer2'];
-    document.getElementById('answer3').innerHTML = question['answer3'];
-    document.getElementById('answer4').innerHTML = question['answer4'];
-    document.getElementById('numberCurrentQuestion').innerHTML = currentQuestion + 1;
+    if(currentQuestion >= questions.length){
 
+    } else{
+        let question = questions[currentQuestion];
+
+        document.getElementById('questionText').innerHTML = question['question'];
+        document.getElementById('answer1').innerHTML = question['answer1'];
+        document.getElementById('answer2').innerHTML = question['answer2'];
+        document.getElementById('answer3').innerHTML = question['answer3'];
+        document.getElementById('answer4').innerHTML = question['answer4'];
+        document.getElementById('numberCurrentQuestion').innerHTML = currentQuestion + 1;    
+    }
 }
 
 function answer(selection){
