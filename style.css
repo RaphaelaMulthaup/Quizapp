@@ -44,6 +44,7 @@ body{
 .quizEnded{
     text-align: center;
     margin: 30px 10px;
+    font-size: 26px;
 }
 
 .displayCorrectAnswers{
