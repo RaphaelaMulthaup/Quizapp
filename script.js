@@ -73,7 +73,7 @@ function init(){
 function showQuestion(){
 
     if(currentQuestion >= questions.length){
-
+        document.getElementById('cardBody').innerHTML = endScreen();
     } else{
         let question = questions[currentQuestion];
 
@@ -84,6 +84,13 @@ function showQuestion(){
         document.getElementById('answer4').innerHTML = question['answer4'];
         document.getElementById('numberCurrentQuestion').innerHTML = currentQuestion + 1;    
     }
+}
+
+function endScreen(){
+    return /*html*/`
+        <h5>Dein Ergebniss:</h5>
+        <h5>Du hast <b></b> von <b>${questions.length}</b> Fragen richtig beantwortet!</h5>
+    `
 }
 
 function answer(selection){
