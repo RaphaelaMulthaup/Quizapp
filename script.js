@@ -72,9 +72,16 @@ function init(){
 }
 
 function showQuestion(){
+    let percent = currentQuestion / questions.length * 100;
+    console.log(percent);
+    document.getElementById('progressBar').style=`width: ${percent}%`;
+
+
 
     if(currentQuestion >= questions.length){
-        document.getElementById('quizCard').innerHTML = endScreen();
+        setTimeout(function(){
+            document.getElementById('quizCard').innerHTML = endScreen();
+        },600);
     } else{
         let question = questions[currentQuestion];
 
@@ -90,6 +97,9 @@ function showQuestion(){
 function endScreen(){
     return /*html*/`
         <img src="./img/hermione.jpg" class="card-img-top">
+        <div class="progress">
+            <div class="progress-bar w-100" id="progressBar" role="progressbar"></div>
+        </div>
         <h5 class="quizEnded">Quiz beendet!</h5>
         <h5 class="displayCorrectAnswers">Du hast <b>${rightAnswers}</b> von <b>${questions.length}</b> Fragen richtig beantwortet!</h5>
     `
@@ -98,11 +108,9 @@ function endScreen(){
 function answer(selection){
     let question = questions[currentQuestion];
     if(selection == question['rightAnswer']){
-        console.log('Richtig!!');
         document.getElementById(`answer${selection}`).parentNode.classList.add('bg-success');
         rightAnswers ++;
     } else{
-        console.log('Falsche Antwort!');
         document.getElementById(`answer${selection}`).parentNode.classList.add('bg-danger');
         document.getElementById(`answer${question['rightAnswer']}`).parentNode.classList.add('bg-success');
     }
@@ -113,14 +121,9 @@ function nextQuestion(){
     currentQuestion ++;
     showQuestion();
     document.getElementById('nextButton').disabled = true;
-    // Das hat nicht geklappt. Habe ich bei Slack nachgefragt.
-    // document.getElementById('cardBody').children.classList.remove('bg-danger', 'bg-success');      
-    document.getElementById('answer1').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer1').parentNode.classList.remove('bg-success');
-    document.getElementById('answer2').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer2').parentNode.classList.remove('bg-success');
-    document.getElementById('answer3').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer3').parentNode.classList.remove('bg-success');
-    document.getElementById('answer4').parentNode.classList.remove('bg-danger');
-    document.getElementById('answer4').parentNode.classList.remove('bg-success');
+    let children = document.getElementById('cardBody').children;
+    for (let index = 0; index < children.length; index++) {
+        let div = children[index];
+        div.classList.remove('bg-danger', 'bg-success');
+    }
 }
