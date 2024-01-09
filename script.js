@@ -73,10 +73,7 @@ function init(){
 
 function showQuestion(){
     let percent = currentQuestion / questions.length * 100;
-    console.log(percent);
     document.getElementById('progressBar').style=`width: ${percent}%`;
-
-
 
     if(currentQuestion >= questions.length){
         setTimeout(function(){
@@ -102,6 +99,8 @@ function endScreen(){
         </div>
         <h5 class="quizEnded">Quiz beendet!</h5>
         <h5 class="displayCorrectAnswers">Du hast <b>${rightAnswers}</b> von <b>${questions.length}</b> Fragen richtig beantwortet!</h5>
+        <button id="restart" class="btn btn-primary btnPurple" onclick="restart()">Nochmal spielen</button>
+
     `
 }
 
@@ -126,4 +125,54 @@ function nextQuestion(){
         let div = children[index];
         div.classList.remove('bg-danger', 'bg-success');
     }
+}
+
+function restart(){
+    currentQuestion = 0;
+    rightAnswers = 0;
+    document.getElementById('quizCard').innerHTML = htmlQuiz();
+    init();
+}
+
+function htmlQuiz(){
+    return /*html*/ `
+            <img src="./img/hogwarts.jpg" class="card-img-top">
+            <div class="progress">
+              <div class="progress-bar" id="progressBar" role="progressbar" style="background-color: #6B63B5" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="card-body" id="cardBody">
+              <h5 class="card-title" id="questionText">Frage</h5>
+
+              <div class="card mb-2 quizAnswerCard" onclick="answer(1)">
+                <div class="card-body" id="answer1">
+                  Antwort
+                </div>
+              </div>
+
+              <div class="card mb-2 quizAnswerCard" onclick="answer(2)">
+                <div class="card-body" id="answer2">
+                  Antwort
+                </div>
+              </div>
+
+              <div class="card mb-2 quizAnswerCard" onclick="answer(3)">
+                <div class="card-body" id="answer3">
+                  Antwort
+                </div>
+              </div>
+              
+              <div class="card mb-2 quizAnswerCard" onclick="answer(4)">
+                <div class="card-body" id="answer4">
+                  Antwort
+                </div>
+              </div>
+
+              <div class="questionFooter">
+                <span>
+                  <b id="numberCurrentQuestion">1</b> von <b id="numberQuestions"></b> Fragen
+                </span>
+               <button disabled id="nextButton" class="btn btn-primary btnPurple" onclick="nextQuestion()">Nächste Frage</button>
+              </div>
+            </div>
+    `
 }
