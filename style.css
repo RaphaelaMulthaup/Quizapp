@@ -61,3 +61,18 @@ body{
 #restart{
     margin: 0px 150px 30px;
 }
+
+@media (max-width: 650px){
+	.quizCard{
+        width: 100% !important;
+        min-height: 100vh;
+        border-radius: 0 !important;
+    }
+    .container{
+        max-width: none !important;
+        padding: 0 !important;
+    }
+    #restart{
+        margin: 0px 30px 30px;
+    }
+}
