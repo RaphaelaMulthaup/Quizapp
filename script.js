@@ -82,15 +82,19 @@ function showQuestion(){
             document.getElementById('quizCard').innerHTML = endScreen();
         },600);
     } else{
-        let question = questions[currentQuestion];
-
-        document.getElementById('questionText').innerHTML = question['question'];
-        document.getElementById('answer1').innerHTML = question['answer1'];
-        document.getElementById('answer2').innerHTML = question['answer2'];
-        document.getElementById('answer3').innerHTML = question['answer3'];
-        document.getElementById('answer4').innerHTML = question['answer4'];
-        document.getElementById('numberCurrentQuestion').innerHTML = currentQuestion + 1;    
+        showNextQuestion();    
     }
+}
+
+function showNextQuestion(){
+  let question = questions[currentQuestion];
+
+  document.getElementById('questionText').innerHTML = question['question'];
+  document.getElementById('answer1').innerHTML = question['answer1'];
+  document.getElementById('answer2').innerHTML = question['answer2'];
+  document.getElementById('answer3').innerHTML = question['answer3'];
+  document.getElementById('answer4').innerHTML = question['answer4'];
+  document.getElementById('numberCurrentQuestion').innerHTML = currentQuestion + 1;
 }
 
 function endScreen(){
@@ -102,7 +106,6 @@ function endScreen(){
         <h5 class="quizEnded">Quiz beendet!</h5>
         <h5 class="displayCorrectAnswers">Du hast <b>${rightAnswers}</b> von <b>${questions.length}</b> Fragen richtig beantwortet!</h5>
         <button id="restart" class="btn btn-primary btnPurple" onclick="restart()">Nochmal spielen</button>
-
     `
 }
 
