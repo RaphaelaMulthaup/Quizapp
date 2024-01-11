@@ -74,16 +74,30 @@ function init(){
 }
 
 function showQuestion(){
-    let percent = currentQuestion / questions.length * 100;
-    document.getElementById('progressBar').style=`width: ${percent}%`;
+  progressProgressbar();
 
-    if(currentQuestion >= questions.length){
-        setTimeout(function(){
-            document.getElementById('quizCard').innerHTML = endScreen();
-        },600);
+
+    if(gameIsOver()){
+      endScreen();
+
     } else{
         showNextQuestion();    
     }
+}
+
+function progressProgressbar(){
+  let percent = currentQuestion / questions.length * 100;
+  document.getElementById('progressBar').style=`width: ${percent}%`;
+}
+
+function gameIsOver(){
+  return currentQuestion >= questions.length;
+}
+
+function endScreen(){
+  setTimeout(function(){
+    document.getElementById('quizCard').innerHTML = endScreenHtml();
+},600);
 }
 
 function showNextQuestion(){
@@ -97,7 +111,7 @@ function showNextQuestion(){
   document.getElementById('numberCurrentQuestion').innerHTML = currentQuestion + 1;
 }
 
-function endScreen(){
+function endScreenHtml(){
     return /*html*/`
         <img src="./img/hermione.jpg" class="card-img-top">
         <div class="progress">
@@ -111,16 +125,24 @@ function endScreen(){
 
 function answer(selection){
     let question = questions[currentQuestion];
-    if(selection == question['rightAnswer']){
-        document.getElementById(`answer${selection}`).parentNode.classList.add('bg-success');
-        audioSuccess.play();
-        rightAnswers ++;
+    if(rightAnswerIsClicked(selection, question)){
+      rightAnswer(selection);
     } else{
         document.getElementById(`answer${selection}`).parentNode.classList.add('bg-danger');
         document.getElementById(`answer${question['rightAnswer']}`).parentNode.classList.add('bg-success');
         audioFail.play();
     }
     document.getElementById('nextButton').disabled = false;
+}
+
+function rightAnswerIsClicked(selection, question){
+  return selection == question['rightAnswer'];
+}
+
+function rightAnswer(selection){
+  document.getElementById(`answer${selection}`).parentNode.classList.add('bg-success');
+  audioSuccess.play();
+  rightAnswers ++;
 }
 
 function nextQuestion(){
