@@ -62,6 +62,10 @@ body{
     margin: 0px 150px 30px;
 }
 
+#progressBarEndscreen{
+    background-color: #6B63B5;
+}
+
 @media (max-width: 650px){
 	.quizCard{
         width: 100% !important;

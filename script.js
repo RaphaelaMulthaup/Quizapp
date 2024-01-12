@@ -37,7 +37,7 @@ let questions = [
 
     {
         "question": "Wo lebt Charlie Weasley wärend er Drachen studiert?",
-        "answer1": "In Romänien",
+        "answer1": "In Rumänien",
         "answer2": "In den USA",
         "answer3": "In Wales",
         "answer4": "In Dover",
@@ -123,7 +123,7 @@ function endScreenHtml(){
     return /*html*/`
         <img src="./img/hermione.jpg" class="card-img-top">
         <div class="progress">
-            <div class="progress-bar w-100" id="progressBar" role="progressbar"></div>
+            <div class="progress-bar w-100" id="progressBarEndscreen" role="progressbar"></div>
         </div>
         <h5 class="quizEnded">Quiz beendet!</h5>
         <h5 class="displayCorrectAnswers">Du hast <b>${rightAnswers}</b> von <b>${questions.length}</b> Fragen richtig beantwortet!</h5>
