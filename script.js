@@ -75,19 +75,19 @@ function init(){
 
 function showQuestion(){
   progressProgressbar();
-
-
-    if(gameIsOver()){
-      endScreen();
-
-    } else{
-        showNextQuestion();    
-    }
+  if(gameIsOver()){
+    endScreen();
+  } else if(lastquestion()){
+      completeQuizButton();
+      showNextQuestion();
+  } else{
+      showNextQuestion();    
+  }
 }
 
 function progressProgressbar(){
   let percent = currentQuestion / questions.length * 100;
-  document.getElementById('progressBar').style=`width: ${percent}%`;
+  document.getElementById('progressBar').style=`width: ${percent}%; background-color: #6B63B5`;
 }
 
 function gameIsOver(){
@@ -98,6 +98,14 @@ function endScreen(){
   setTimeout(function(){
     document.getElementById('quizCard').innerHTML = endScreenHtml();
 },600);
+}
+
+function lastquestion(){
+  return currentQuestion == questions.length -1;
+}
+
+function completeQuizButton(){
+  document.getElementById('nextButton').innerHTML='Quiz abschließen!';
 }
 
 function showNextQuestion(){
@@ -128,9 +136,7 @@ function answer(selection){
     if(rightAnswerIsClicked(selection, question)){
       rightAnswer(selection);
     } else{
-        document.getElementById(`answer${selection}`).parentNode.classList.add('bg-danger');
-        document.getElementById(`answer${question['rightAnswer']}`).parentNode.classList.add('bg-success');
-        audioFail.play();
+      wrongAnswer(selection, question);
     }
     document.getElementById('nextButton').disabled = false;
 }
@@ -145,22 +151,32 @@ function rightAnswer(selection){
   rightAnswers ++;
 }
 
+function wrongAnswer(selection, question){
+  document.getElementById(`answer${selection}`).parentNode.classList.add('bg-danger');
+  document.getElementById(`answer${question['rightAnswer']}`).parentNode.classList.add('bg-success');
+  audioFail.play();
+}
+
 function nextQuestion(){
-    currentQuestion ++;
-    showQuestion();
-    document.getElementById('nextButton').disabled = true;
-    let children = document.getElementById('cardBody').children;
-    for (let index = 0; index < children.length; index++) {
-        let div = children[index];
-        div.classList.remove('bg-danger', 'bg-success');
-    }
+  currentQuestion ++;
+  showQuestion();
+  document.getElementById('nextButton').disabled = true;
+  resetColoring();
+}
+
+function resetColoring(){
+  let children = document.getElementById('cardBody').children;
+  for (let index = 0; index < children.length; index++) {
+      let div = children[index];
+      div.classList.remove('bg-danger', 'bg-success');
+  }
 }
 
 function restart(){
-    currentQuestion = 0;
-    rightAnswers = 0;
-    document.getElementById('quizCard').innerHTML = htmlQuiz();
-    init();
+  currentQuestion = 0;
+  rightAnswers = 0;
+  document.getElementById('quizCard').innerHTML = htmlQuiz();
+  init();
 }
 
 function htmlQuiz(){
